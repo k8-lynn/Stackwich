@@ -1,0 +1,341 @@
+[gd_scene load_steps=28 format=3 uid="uid://ca3cofam5dya2"]
+
+[ext_resource type="PackedScene" uid="uid://bb5j5nllcilj" path="res://objects/bread.tscn" id="1_735ex"]
+[ext_resource type="Script" path="res://scripts/stack.gd" id="1_l6goy"]
+[ext_resource type="Texture2D" uid="uid://ducs7mwyy0nyw" path="res://objects/pattern.png" id="3_bs6m4"]
+[ext_resource type="Script" path="res://scripts/HBoxContainer.gd" id="4_t8iq8"]
+[ext_resource type="Texture2D" uid="uid://d0vp6hoh2k7h" path="res://prettiness/bar.png" id="4_uqaql"]
+[ext_resource type="FontFile" uid="uid://dxdk4dccs78xn" path="res://prettiness/Simply Rounded Bold.ttf" id="8_010ag"]
+[ext_resource type="Texture2D" uid="uid://cnstl04o2gpqp" path="res://prettiness/pause_btn.png" id="9_1d6fm"]
+[ext_resource type="Texture2D" uid="uid://nvfrrm2n5s1d" path="res://prettiness/image1.png" id="10_c3mu3"]
+[ext_resource type="Texture2D" uid="uid://covny4nr8wh8o" path="res://prettiness/heart.png" id="11_k823n"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qlbgb"]
+sky_top_color = Color(0.431967, 0.503713, 0.603554, 1)
+sky_horizon_color = Color(0.657992, 0.668178, 0.684139, 1)
+ground_horizon_color = Color(0.657992, 0.668178, 0.684139, 1)
+
+[sub_resource type="Sky" id="Sky_tqwth"]
+sky_material = SubResource("ProceduralSkyMaterial_qlbgb")
+
+[sub_resource type="Environment" id="Environment_rpcsg"]
+background_mode = 3
+sky = SubResource("Sky_tqwth")
+ambient_light_source = 2
+ambient_light_color = Color(0.84309, 0.729126, 0.597988, 1)
+ambient_light_energy = 0.9
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_i45ln"]
+
+[sub_resource type="Animation" id="Animation_cu3tr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(716, 519)]
+}
+
+[sub_resource type="Animation" id="Animation_6y5t5"]
+resource_name = "bg"
+length = 20.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 9, 20),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(716, 519), Vector2(-342, 283), Vector2(716, 519)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6hddy"]
+_data = {
+"RESET": SubResource("Animation_cu3tr"),
+"bg": SubResource("Animation_6y5t5")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5xyde"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oj05u"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_c2av7"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_qoynl"]
+offsets = PackedFloat32Array(0.536313, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dp6a0"]
+gradient = SubResource("Gradient_qoynl")
+
+[sub_resource type="Curve" id="Curve_6y2d3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.512077, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.021978), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_870by"]
+curve = SubResource("Curve_6y2d3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ax2n1"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -60, 0)
+emission_shape_scale = Vector3(1, 2, 1)
+emission_shape = 3
+emission_box_extents = Vector3(50, 60, 1)
+direction = Vector3(0, -1, 0)
+spread = 50.0
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+damping_min = 20.0
+damping_max = 20.0
+scale_min = 0.7
+scale_max = 0.8
+scale_curve = SubResource("CurveTexture_870by")
+color_ramp = SubResource("GradientTexture1D_dp6a0")
+anim_offset_min = 0.1921
+anim_offset_max = 0.8973
+
+[sub_resource type="Animation" id="Animation_tftxc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["3"]
+}
+
+[sub_resource type="Animation" id="Animation_wk06l"]
+resource_name = "countdown"
+length = 4.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": ["3", "2", "1", "Start!"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ny1gv"]
+_data = {
+"RESET": SubResource("Animation_tftxc"),
+"countdown": SubResource("Animation_wk06l")
+}
+
+[node name="Stack" type="Node3D"]
+script = ExtResource("1_l6goy")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_rpcsg")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+shadow_opacity = 0.5
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.995689, 0.0927529, 0, -0.0927529, 0.995689, 0, 4.89124, 6.35575)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+autostart = true
+
+[node name="bread" parent="." instance=ExtResource("1_735ex")]
+
+[node name="background" type="Control" parent="."]
+material = SubResource("CanvasItemMaterial_i45ln")
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Pattern" type="Sprite2D" parent="background"]
+position = Vector2(716, 519)
+scale = Vector2(0.65746, 0.65746)
+texture = ExtResource("3_bs6m4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="background/Pattern"]
+libraries = {
+"": SubResource("AnimationLibrary_6hddy")
+}
+autoplay = "bg"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 376.0
+offset_bottom = 30.0
+texture = ExtResource("4_uqaql")
+expand_mode = 1
+
+[node name="order" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 33.0
+offset_top = 30.0
+offset_right = 370.0
+offset_bottom = 80.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/order"]
+custom_minimum_size = Vector2(342, 54)
+layout_mode = 2
+offset_left = -26.0
+offset_top = -1.0
+offset_right = 316.0
+offset_bottom = 53.0
+script = ExtResource("4_t8iq8")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 9.0
+offset_top = 3.0
+offset_right = 65.0
+offset_bottom = 25.0
+theme_override_colors/font_color = Color(0.971207, 0.984095, 1, 1)
+theme_override_fonts/font = ExtResource("8_010ag")
+theme_override_font_sizes/font_size = 20
+text = "Order"
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 336.0
+offset_top = -4.0
+offset_right = 371.0
+offset_bottom = 31.0
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5xyde")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_oj05u")
+icon = ExtResource("9_1d6fm")
+flat = true
+expand_icon = true
+
+[node name="game over" type="Label" parent="CanvasLayer"]
+visible = false
+offset_left = 66.0
+offset_top = 188.0
+offset_right = 320.0
+offset_bottom = 255.0
+theme_override_colors/font_color = Color(0.72549, 0.941176, 0.909804, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("8_010ag")
+theme_override_font_sizes/font_size = 50
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="won" type="Label" parent="CanvasLayer"]
+visible = false
+offset_left = 66.0
+offset_top = 188.0
+offset_right = 320.0
+offset_bottom = 255.0
+theme_override_colors/font_color = Color(0.72549, 0.941176, 0.909804, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("8_010ag")
+theme_override_font_sizes/font_size = 50
+text = "You Won!"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="restart" type="Timer" parent="CanvasLayer/won"]
+
+[node name="hearts" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="heart" type="TextureRect" parent="CanvasLayer/hearts"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 88.0
+offset_right = 47.0
+offset_bottom = 133.0
+texture = ExtResource("11_k823n")
+expand_mode = 1
+
+[node name="heart2" type="TextureRect" parent="CanvasLayer/hearts"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 122.0
+offset_right = 47.0
+offset_bottom = 167.0
+texture = ExtResource("11_k823n")
+expand_mode = 1
+
+[node name="heart3" type="TextureRect" parent="CanvasLayer/hearts"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 156.0
+offset_right = 47.0
+offset_bottom = 201.0
+texture = ExtResource("11_k823n")
+expand_mode = 1
+
+[node name="sparkles" type="GPUParticles2D" parent="CanvasLayer"]
+visible = false
+material = SubResource("CanvasItemMaterial_c2av7")
+position = Vector2(283, 557)
+amount = 32
+amount_ratio = 0.168
+process_material = SubResource("ParticleProcessMaterial_ax2n1")
+texture = ExtResource("10_c3mu3")
+speed_scale = 3.0
+
+[node name="Timer" type="Timer" parent="CanvasLayer/sparkles"]
+wait_time = 1.2
+one_shot = true
+
+[node name="countdown" type="Label" parent="CanvasLayer"]
+visible = false
+offset_left = 66.0
+offset_top = 188.0
+offset_right = 320.0
+offset_bottom = 255.0
+theme_override_colors/font_color = Color(0.72549, 0.941176, 0.909804, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("8_010ag")
+theme_override_font_sizes/font_size = 50
+text = "Start!"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="animation" type="AnimationPlayer" parent="CanvasLayer/countdown"]
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_ny1gv")
+}
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/order/HBoxContainer" method="_on_button_pressed"]

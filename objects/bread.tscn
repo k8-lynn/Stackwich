@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://bb5j5nllcilj"]
+
+[ext_resource type="PackedScene" uid="uid://rfihffdutrqp" path="res://objects/bread.glb" id="1_orllx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_18dla"]
+size = Vector3(1.18469, 0.862122, 1)
+
+[node name="catbread" instance=ExtResource("1_orllx")]
+
+[node name="Cube" parent="." index="0"]
+layers = 3
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Cube" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube/StaticBody3D" index="0"]
+transform = Transform3D(2, 0, 0, 0, 0.5, 0, 0, 0, 2.5, 0.0118407, -0.0344695, 0)
+shape = SubResource("BoxShape3D_18dla")
+
+[node name="Cube_001" parent="." index="1"]
+layers = 3
+
+[node name="Area3D" type="Area3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(2, 0, 0, 0, 0.5, 0, 0, 0, 2.5, -0.0257407, 0.123955, 0)
+shape = SubResource("BoxShape3D_18dla")
